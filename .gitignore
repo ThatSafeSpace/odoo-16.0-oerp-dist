@@ -4,3 +4,4 @@ assembly
 .config
 .test
 .venv
+odoo/debian/odoo.conf
