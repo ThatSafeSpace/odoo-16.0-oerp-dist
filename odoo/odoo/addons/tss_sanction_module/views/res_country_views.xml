@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <record id="country_tree_view_inherit" model="ir.ui.view">
+    <field name="name">res.country.inherit.view.tree</field>
+    <field name="model">res.country</field>
+    <field name="inherit_id" ref="base.view_country_tree"/>
+    <field name="arch" type="xml">
+
+      <!-- How to add a field to tree view -->
+      <xpath expr="field[@name='code']" position="after">
+        <field name="is_sanctioned" invisible="1"/>
+      </xpath>
+
+      <!-- How to add a button to the header of a tree view-->
+      <xpath expr="//tree" position="inside">
+        <header>
+          <button name="action_sanction" string="Toggle Sanction" type="object" icon="fa-minus-circle"/>
+        </header>
+      </xpath>
+
+      <!-- How to conditionally change color of tree view line -->
+      <xpath expr="//tree" position="attributes">
+        <attribute name="decoration-danger">is_sanctioned==True</attribute>
+      </xpath>
+
+    </field>
+  </record>
+
+  <record id="country_form_view_inherit" model="ir.ui.view">
+    <field name="name">res.country.inherit.view.form</field>
+    <field name="model">res.country</field>
+    <field name="inherit_id" ref="base.view_country_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='code']" position="after">
+        <field name="is_sanctioned" />
+      </xpath>
+    </field>
+  </record>
+
+  <record model="ir.actions.server" id="action_sanction">
+    <field name="name">Sanction Country</field>
+    <field name="model_id" ref="base.model_res_country"/>
+    <field name="binding_model_id" ref="base.model_res_country"/>
+    <field name="state">code</field>
+    <field name="code">
+      records.action_sanction()
+    </field>
+  </record>
+
+</odoo>

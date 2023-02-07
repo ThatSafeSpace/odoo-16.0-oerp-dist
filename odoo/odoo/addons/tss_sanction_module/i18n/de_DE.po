@@ -1,0 +1,54 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tss_sanction_module
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-07 13:02+0000\n"
+"PO-Revision-Date: 2023-02-07 13:02+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tss_sanction_module
+#: model:ir.model,name:tss_sanction_module.model_res_partner
+msgid "Contact"
+msgstr "Kontakt"
+
+#. module: tss_sanction_module
+#: model:ir.model,name:tss_sanction_module.model_res_country
+msgid "Country"
+msgstr "Land"
+
+#. module: tss_sanction_module
+#: model:ir.model,name:tss_sanction_module.model_res_country_state
+msgid "Country state"
+msgstr "Gebiet"
+
+#. module: tss_sanction_module
+#: model:ir.model.fields,field_description:tss_sanction_module.field_res_partner__partner_sanctioned
+#: model:ir.model.fields,field_description:tss_sanction_module.field_res_users__partner_sanctioned
+msgid "Partner Sanctioned"
+msgstr "Kontakt sanktioniert"
+
+#. module: tss_sanction_module
+#: model:ir.actions.server,name:tss_sanction_module.action_sanction
+msgid "Sanction Country"
+msgstr "Sanktionen für Land"
+
+#. module: tss_sanction_module
+#: model:ir.model.fields,field_description:tss_sanction_module.field_res_country__is_sanctioned
+#: model:ir.model.fields,field_description:tss_sanction_module.field_res_country_state__is_sanctioned
+msgid "Sanctioned"
+msgstr "Sanktioniert"
+
+#. module: tss_sanction_module
+#: model_terms:ir.ui.view,arch_db:tss_sanction_module.country_state_tree_view_inherit
+#: model_terms:ir.ui.view,arch_db:tss_sanction_module.country_tree_view_inherit
+msgid "Toggle Sanction"
+msgstr "Sanktionieren"
