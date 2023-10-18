@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="tss_modern_tree_view.ComposerWarning" t-inherit="mail.Composer" t-inherit-mode="extension" owl="1">
+        <xpath expr="//*[hasclass('o_Composer')]" position="before">
+            <t t-log="this"/>
+            <t t-log="'weee'"/>
+            <t t-log="composerView"/>
+            <t t-if="composerWarning">
+                <h1>AAAAAAAAA</h1>
+            </t>
+            <h1>hellooo</h1>
+        </xpath>
+    </t>
+</templates>
