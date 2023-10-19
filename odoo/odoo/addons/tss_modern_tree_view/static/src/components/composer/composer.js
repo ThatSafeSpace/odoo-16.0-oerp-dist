@@ -1,48 +1,43 @@
 /** @odoo-module **/
 
-import { useComponentToModel } from '@mail/component_hooks/use_component_to_model';
-import { useRefToModel } from '@mail/component_hooks/use_ref_to_model';
-import { registerMessagingComponent } from '@mail/utils/messaging_component';
-import { Composer } from '@mail/components/composer/composer';
-import { getMessagingComponent } from '@mail/utils/messaging_component';
-const { Component, onWillRender, useEffect, useRef, useState, xml } = owl;
+import { registerPatch } from '@mail/model/model_core';
+import { attr, many, one } from '@mail/model/model_field';
+import { BASE_VISUAL } from '@mail/models/chat_window_manager';
 
-export class ComposerWarning extends Component {
-	/**
-	 * @override
-	 */
-	setup() {
-		console.log('aaaaaa');
-		super.setup();
-		onWillRender(() => {
-			this.initCalcData();
-		});
-	}
-
-	//--------------------------------------------------------------------------
-	// Public
-	//--------------------------------------------------------------------------
-
-	/**
-	 * @returns {ComposerWarning}
-	 */
-	get composerWarning() {
-		return this.props.record;
-	}
-
-	/**
-	 * @returns {ComposerView}
-	 */
-	get composerView() {
-		console.log('uuuu');
-		return this.props.record;
-	}
-}
-
-Object.assign(ComposerWarning, {
-	props: { record: Object },
-	components: { Composer: getMessagingComponent('Composer') },
-	template: 'tss_modern_tree_view.ComposerWarning',
+registerPatch({
+	name: 'Composer',
+	recordMethods: {
+		/**
+		 * Example of a new custom record method definition
+		 */
+		checkIsUser() {
+			return true;
+		},
+	},
+	fields: {
+		/**
+		 * Example of a field computing a value.
+		 * composerWarning can be accessed in the XML Template to dynamically show or hide
+		 * parts of the template. Here we call the custom defined method checkIsUser()
+		 */
+		composerWarning: attr({
+			compute() {
+				if (this.checkIsUser()) {
+					return true;
+				}
+			},
+		}),
+		/**
+		 * Example of a field overwrite. We get the data from this._super(),
+		 * then do custom things and return the response, resource etc.
+		 * this example console logs each placeholder twice.
+		 */
+		placeholder: {
+			compute() {
+				var res = this._super();
+				console.log(res + res);
+				return res;
+			},
+		},
+	},
 });
-
-registerMessagingComponent(ComposerWarning);
